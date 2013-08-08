@@ -13,6 +13,7 @@ A collection of Rspec testing best practices
 * [Use factories](#use-factories)
 * [Choose matchers based on readability](#matchers-readability)
 * [Run specific tests](#run-specific-tests)
+* [Debug Capybara tests by enabling js](#debug-capybara-tests-by-enabling-js)
 * [Consult the logs](#consult-the-logs)
 * [Other tips](#other-tips)
 * [More Resources](#more-resources)
@@ -301,6 +302,28 @@ rake spec SPEC=spec/controllers/sessions_controller_spec.rb \
 
 # not in rails
 rspec spec/login_spec.rb -e "should log in with cookie"
+```
+
+## Debug Capybara tests by enabling js
+
+Enabling javascript can make it easier to debug Capybara tests.
+
+```ruby
+it 'should register successfully', :js => true do
+  visit registration_page
+  sleep(3) # pause the test for 3 seconds to observe what is happening
+  fill_in 'username', :with => 'abinoda'
+end
+```
+Unless the pages you are testing require JS, it's best to disable JS after you're done writing the test so that the test suite runs faster.
+
+Alternatively, Capybara also has a `save_and_open_page` method. As the name implies, it saves the page — complete with styling and images — and opens it in your browser:
+```ruby
+it 'should register successfully' do
+  visit registration_page
+  save_and_open_page
+  fill_in 'username', :with => 'abinoda'
+end
 ```
 
 ## Consult the logs
