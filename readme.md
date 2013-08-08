@@ -304,6 +304,11 @@ rake spec SPEC=spec/controllers/sessions_controller_spec.rb \
 rspec spec/login_spec.rb -e "should log in with cookie"
 ```
 
+In Rails, run only your integration tests:
+```sh
+rake spec:features
+```
+
 ## Debug Capybara tests by enabling js
 
 Enabling javascript can make it easier to debug Capybara tests.
