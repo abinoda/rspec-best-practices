@@ -11,7 +11,7 @@ A collection of Rspec testing best practices
 * [Optimize database queries](#optimize-database-queries)
 * [Use factories](#use-factories)
 * [Choose matchers based on readability](#matchers-readability)
-* [Run individual tests](#run-individual-tests)
+* [Run specific tests](#run-specific-tests)
 * [Other tips](#other-tips)
 * [More Resources](#more-resources)
 * [Libraries](#libraries)
@@ -205,7 +205,9 @@ collection.size.should == 4
 collection.should have(4).items
 ```
 
-## Run individual tests
+## Run specific tests
+
+Running your entire test suite over and over again is a waste of time.
 
 Run example or block at specified line:
 ```sh
