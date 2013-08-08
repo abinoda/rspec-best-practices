@@ -189,7 +189,7 @@ end
 # spec/fetures/user_signs_out_spec.rb
 require 'spec_helper'
 
-feature 'User can sign in' do
+feature 'User can sign out' do
   scenario 'as a user' do
     sign_in
 
