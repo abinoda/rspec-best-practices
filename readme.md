@@ -8,6 +8,7 @@ A collection of Rspec testing best practices
 * [Only one expectation per example](#only-one-expectation-per-example)
 * [Test valid, edge and invalid cases](#test-valid-edge-and-invalid-cases)
 * [Use let](#use-let)
+* [DRY](#dry)
 * [Optimize database queries](#optimize-database-queries)
 * [Use factories](#use-factories)
 * [Choose matchers based on readability](#matchers-readability)
@@ -146,6 +147,79 @@ describe User
     user.name.should_not be_nil
   end
 end
+```
+
+## DRY
+Be sure to apply good code refactoring principles to your tests.
+
+Use before and after hooks:
+```ruby
+describe Thing do
+  before(:each) do
+    @thing = Thing.new
+  end
+
+  describe "initialized in before(:each)" do
+    it "has 0 widgets" do
+      @thing.should have(0).widgets
+    end
+
+    it "does not share state across examples" do
+      @thing.should have(0).widgets
+    end
+  end
+end
+```
+
+Extract reusable code into helper methods:
+```ruby
+# spec/fetures/user_signs_in_spec.rb
+require 'spec_helper'
+
+feature 'User can sign in' do
+  scenario 'as a user' do
+    sign_in
+
+    expect(page).to have_content "Your account"
+  end
+end
+
+# spec/fetures/user_signs_out_spec.rb
+require 'spec_helper'
+
+feature 'User can sign in' do
+  scenario 'as a user' do
+    sign_in
+
+    click_link "Logout"
+
+    expect(page).to have_content "Sign up"
+  end
+end
+```
+
+```ruby
+# spec/support/authentication_helper.rb
+module AuthenticationHelper
+  def sign_in
+    visit root_path
+
+    user = FactoryGirl.create(:user)
+
+    fill_in 'user_session_email',    with: user.email
+    fill_in 'user_session_password', with: user.password
+    click_button "Sign in"
+
+    return user
+  end
+end
+```
+
+```ruby
+# spec/spec_helper.rb
+RSpec.configure do |config|
+  config.include AuthenticationHelper, type: :feature
+  # ...
 ```
 
 ## Optimize database queries
