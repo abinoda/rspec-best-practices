@@ -13,6 +13,7 @@ A collection of Rspec testing best practices
 * [Use factories](#use-factories)
 * [Choose matchers based on readability](#matchers-readability)
 * [Run specific tests](#run-specific-tests)
+* [Consult the logs](#consult-the-logs)
 * [Other tips](#other-tips)
 * [More Resources](#more-resources)
 * [Libraries](#libraries)
@@ -301,6 +302,18 @@ rake spec SPEC=spec/controllers/sessions_controller_spec.rb \
 # not in rails
 rspec spec/login_spec.rb -e "should log in with cookie"
 ```
+
+## Consult the logs
+When you run any rails application (the webserver, tests or rake tasks), ouput is saved to a log file. There is a log file for each environment: log/development.log, log/test.log, etc.
+
+Take a moment to open up one of these log files in your editor and take a look at its contents. To watch your test log files, use the *nix tool tail:
+
+```sh
+tail -f log/test.log
+```
+
+Curious what -f means? Check the man page for the tail utility: man tail
+
 
 ## Other tips
 * When something in your application goes wrong, write a test that reproduces the error and then correct it. You will gain several hour of sleep and more serenity.
