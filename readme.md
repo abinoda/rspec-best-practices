@@ -14,7 +14,7 @@ A collection of Rspec testing best practices
 * [Choose matchers based on readability](#matchers-readability)
 * [Run specific tests](#run-specific-tests)
 * [Debug Capybara tests with save_and_open_page](#debug-capybara-with-screen-capture)
-* [Only enable JS in Capybara when needed](#only-enable-js-in-capybara-when-needed)
+* [Only enable JS in Capybara when necessary](#only-enable-js-in-capybara-when-needed)
 * [Consult the logs](#consult-the-logs)
 * [Other tips](#other-tips)
 * [More Resources](#more-resources)
@@ -227,7 +227,7 @@ RSpec.configure do |config|
 
 ## Optimize database queries
 
-  Test suites can be heavy to run. For optimal performance, don't load or create more data than necessary.
+  Large test suites can take a long time to run. Don't load or create more data than necessary.
 
 ```ruby
 describe User do
@@ -245,17 +245,17 @@ end
 
 ## Use factories
 
-  Use factory_girl to reduce the verbosity on creating new data.
+  Use factory_girl to reduce the verbosity when working with models.
 
 ```ruby
-# wrong
+# before
 user = User.create( :name => "Genoveffa",
                     :surname => "Piccolina",
                     :city => "Billyville",
                     :birth => "17 Agoust 1982",
                     :active => true)
 
-# correct (FactoryGirl)
+# after
 user = Factory.create(:user)
 ```
 
@@ -321,7 +321,7 @@ it 'should register successfully' do
 end
 ```
 
-## Only enable JS in Capybara when needed
+## Only enable JS in Capybara when necessary
 
 Only enable JS when your tests require it. Enabling JS slows down your test suite.
 
@@ -370,4 +370,4 @@ Curious what -f means? Check the man page for the tail utility: man tail
 * [Timecop](https://github.com/jtrupiano/timecop)
 * [Guard](https://github.com/guard/guard-rspec)
 * [Fuubar](https://github.com/jeffkreeftmeijer/fuubar)
-* [Webmock]([Webmock](https://github.com/bblimke/webmock)
+* [Webmock](https://github.com/bblimke/webmock)
