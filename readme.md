@@ -13,7 +13,8 @@ A collection of Rspec testing best practices
 * [Use factories](#use-factories)
 * [Choose matchers based on readability](#matchers-readability)
 * [Run specific tests](#run-specific-tests)
-* [Debug Capybara tests by enabling js](#debug-capybara-tests-by-enabling-js)
+* [Debug Capybara tests with save_and_open_page](#debug-capybara-with-screen-capture)
+* [Only enable JS in Capybara when needed](#only-enable-js-in-capybara-when-needed)
 * [Consult the logs](#consult-the-logs)
 * [Other tips](#other-tips)
 * [More Resources](#more-resources)
@@ -226,7 +227,7 @@ RSpec.configure do |config|
 
 ## Optimize database queries
 
-  Test suites can be heavy to run. To help improve performance, is important to not load or create more data than needed.
+  Test suites can be heavy to run. For optimal performance, don't load or create more data than necessary.
 
 ```ruby
 describe User do
@@ -309,20 +310,9 @@ In Rails, run only your integration tests:
 rake spec:features
 ```
 
-## Debug Capybara tests by enabling js
+## Debug Capybara tests with save_and_open_page
 
-Enabling javascript can make it easier to debug Capybara tests.
-
-```ruby
-it 'should register successfully', :js => true do
-  visit registration_page
-  sleep(3) # pause the test for 3 seconds to observe what is happening
-  fill_in 'username', :with => 'abinoda'
-end
-```
-Unless the pages you are testing require JS, it's best to disable JS after you're done writing the test so that the test suite runs faster.
-
-Alternatively, Capybara also has a `save_and_open_page` method. As the name implies, it saves the page — complete with styling and images — and opens it in your browser:
+Capybara has a `save_and_open_page` method. As the name implies, it saves the page — complete with styling and images — and opens it in your browser so you can inspect it:
 ```ruby
 it 'should register successfully' do
   visit registration_page
@@ -330,6 +320,19 @@ it 'should register successfully' do
   fill_in 'username', :with => 'abinoda'
 end
 ```
+
+## Only enable JS in Capybara when needed
+
+Only enable JS when your tests require it. Enabling JS slows down your test suite.
+
+```ruby
+# only use js => true when your tests depend on it
+it 'should register successfully', :js => true do
+  visit registration_page
+  fill_in 'username', :with => 'abinoda'
+end
+```
+Unless the pages you are testing require JS, it's best to disable JS after you're done writing the test so that the test suite runs faster.
 
 ## Consult the logs
 When you run any rails application (the webserver, tests or rake tasks), ouput is saved to a log file. There is a log file for each environment: log/development.log, log/test.log, etc.
