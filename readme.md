@@ -1,7 +1,6 @@
 # Rspec Best Practices
 A collection of Rspec testing best practices
 
-## Table of Contents
 
 * [Describe your methods](#describe-your-methods)
 * [Use Context](#use-context)
