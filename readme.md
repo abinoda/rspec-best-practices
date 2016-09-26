@@ -349,7 +349,7 @@ Curious what -f means? Check the man page for the tail utility: man tail
 ## Other tips
 * When something in your application goes wrong, write a test that reproduces the error and then correct it. You will gain several hour of sleep and more serenity.
 * Use solutions like [guard](https://github.com/guard/guard) (using [guard-rspec](https://github.com/guard/guard-rspec)) to automatically run all of your test, without thinking about it. Combining it with growl, it will become one of your best friends. Examples of other solutions are [test_notifier](https://github.com/fnando/test_notifier), [watchr](https://github.com/mynyml/watchr) and [autotest](http://ph7spot.com/musings/getting-started-with-autotest).
-* Use [TimeCop](https://github.com/jtrupiano/timecop) to mock and test methods that relies on time.
+* Use [TimeCop](https://github.com/travisjeffery/timecop) to mock and test methods that relies on time.
 * Use [Webmock](https://github.com/bblimke/webmock) to mock HTTP calls to remote service that could not be available all the time and that you want to personalize.
 * Use a good looking formatter to check if your test passed or failed. I use [fuubar](http://jeffkreeftmeijer.com/2010/fuubar-the-instafailing-rspec-progress-bar-formatter/), which to me looks perfect.
 
@@ -367,7 +367,7 @@ Curious what -f means? Check the man page for the tail utility: man tail
 * [Capybara](https://github.com/jnicklas/capybara)
 * [Database Cleaner](https://github.com/bmabey/database_cleaner)
 * [Spork](https://github.com/sporkrb/spork)
-* [Timecop](https://github.com/jtrupiano/timecop)
+* [Timecop](https://github.com/travisjeffery/timecop)
 * [Guard](https://github.com/guard/guard-rspec)
 * [Fuubar](https://github.com/jeffkreeftmeijer/fuubar)
 * [Webmock](https://github.com/bblimke/webmock)
