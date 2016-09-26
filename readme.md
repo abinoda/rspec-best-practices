@@ -121,6 +121,7 @@ describe "#month_in_english(month_id)" do
     it "should return 'January' for 1" # lower boundary
     it "should return 'March' for 3"
     it "should return 'December' for 12" # upper boundary
+  end
   context "when invalid" do
     it "should return nil for 0"
     it "should return nil for 13"
