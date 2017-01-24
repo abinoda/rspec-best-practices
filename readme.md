@@ -1,7 +1,6 @@
 # Rspec Best Practices
 A collection of Rspec testing best practices
 
-## Table of Contents
 
 * [Describe your methods](#describe-your-methods)
 * [Use Context](#use-context)
@@ -20,7 +19,6 @@ A collection of Rspec testing best practices
 * [More Resources](#more-resources)
 * [Libraries](#libraries)
 
-## Describe your methods
 
   Keep clear the methods you are describing using "." as prefix for class methods and "#" as prefix for instance methods.
 
