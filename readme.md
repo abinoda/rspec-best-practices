@@ -177,7 +177,7 @@ end
 
 Extract reusable code into helper methods:
 ```ruby
-# spec/fetures/user_signs_in_spec.rb
+# spec/features/user_signs_in_spec.rb
 require 'spec_helper'
 
 feature 'User can sign in' do
@@ -188,7 +188,7 @@ feature 'User can sign in' do
   end
 end
 
-# spec/fetures/user_signs_out_spec.rb
+# spec/features/user_signs_out_spec.rb
 require 'spec_helper'
 
 feature 'User can sign out' do
