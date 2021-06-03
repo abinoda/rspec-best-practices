@@ -208,7 +208,7 @@ module AuthenticationHelper
   def sign_in
     visit root_path
 
-    user = FactoryGirl.create(:user)
+    user = FactoryBot.create(:user)
 
     fill_in 'user_session_email',    with: user.email
     fill_in 'user_session_password', with: user.password
@@ -246,7 +246,7 @@ end
 
 ## Use factories
 
-  Use factory_girl to reduce the verbosity when working with models.
+  Use factory_bot to reduce the verbosity when working with models.
 
 ```ruby
 # before
@@ -363,7 +363,7 @@ Curious what -f means? Check the man page for the tail utility: man tail
 
 ## Libraries
 * [RSpec](https://github.com/rspec/rspec)
-* [Factory girl](https://github.com/thoughtbot/factory_girl)
+* [Factory bot](https://github.com/thoughtbot/factory_bot)
 * [Shoulda Matchers](https://github.com/thoughtbot/shoulda-matchers)
 * [Capybara](https://github.com/jnicklas/capybara)
 * [Database Cleaner](https://github.com/bmabey/database_cleaner)
